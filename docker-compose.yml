@@ -1,0 +1,15 @@
+services:
+  nest:
+    image: node:latest  
+    working_dir: /usr/src/backend
+    command: bash -c "npm install --quiet --no-fund --loglevel=error && npm run start:dev"
+    volumes:
+      - ./pattes-nest:/usr/src/backend  
+    ports:
+      - "7000:3000"
+    networks:
+      - pattes-network
+
+networks:
+  pattes-network:
+    driver: bridge
