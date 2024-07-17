@@ -14,29 +14,30 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AnimalsController = void 0;
 const common_1 = require("@nestjs/common");
+const animals_service_1 = require("./animals.service");
 let AnimalsController = class AnimalsController {
-    constructor(AnimalsService) {
-        this.AnimalsService = AnimalsService;
+    constructor(animalsService) {
+        this.animalsService = animalsService;
     }
     findAll() {
-        return "Animais";
+        return this.animalsService.findAll();
     }
     findOne(id) {
-        return `Animal ${id}`;
+        return this.animalsService.findOne(id);
     }
     create(body) {
-        return body;
+        return this.animalsService.create(body);
     }
     update(id, body) {
-        return `Atualizado Animal ${id}`;
+        return this.animalsService.update(id, body);
     }
     remove(id) {
-        return `Deletado no compsoer Animal ${id}`;
+        return this.animalsService.remove(id);
     }
 };
 exports.AnimalsController = AnimalsController;
 __decorate([
-    (0, common_1.Get)("list"),
+    (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
@@ -73,6 +74,6 @@ __decorate([
 ], AnimalsController.prototype, "remove", null);
 exports.AnimalsController = AnimalsController = __decorate([
     (0, common_1.Controller)('animals'),
-    __metadata("design:paramtypes", [Object])
+    __metadata("design:paramtypes", [animals_service_1.AnimalsService])
 ], AnimalsController);
 //# sourceMappingURL=animals.controller.js.map
