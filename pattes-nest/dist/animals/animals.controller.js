@@ -15,6 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AnimalsController = void 0;
 const common_1 = require("@nestjs/common");
 let AnimalsController = class AnimalsController {
+    constructor(AnimalsService) {
+        this.AnimalsService = AnimalsService;
+    }
     findAll() {
         return "Animais";
     }
@@ -69,6 +72,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], AnimalsController.prototype, "remove", null);
 exports.AnimalsController = AnimalsController = __decorate([
-    (0, common_1.Controller)('animals')
+    (0, common_1.Controller)('animals'),
+    __metadata("design:paramtypes", [Object])
 ], AnimalsController);
 //# sourceMappingURL=animals.controller.js.map

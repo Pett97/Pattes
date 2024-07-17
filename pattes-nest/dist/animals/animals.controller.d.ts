@@ -1,4 +1,6 @@
 export declare class AnimalsController {
+    private readonly AnimalsService;
+    constructor(AnimalsService: any);
     findAll(): string;
     findOne(id: string): string;
     create(body: any): any;

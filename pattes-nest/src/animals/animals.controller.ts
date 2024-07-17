@@ -1,7 +1,12 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post } from '@nestjs/common';
+import { AnimalsService } from './animals.service';
 
 @Controller('animals')
 export class AnimalsController {
+
+    constructor(private readonly AnimalsService){
+        
+    }
 
     @Get("list")
     findAll(){
