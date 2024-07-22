@@ -12,70 +12,68 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AnimalsController = void 0;
+exports.VeterinariansController = void 0;
 const common_1 = require("@nestjs/common");
-const animals_service_1 = require("./animals.service");
-const create_animal_dto_1 = require("./dto/create-animal.dto");
-const update_animal_dto_1 = require("./dto/update-animal.dto");
-let AnimalsController = class AnimalsController {
-    constructor(animalsService) {
-        this.animalsService = animalsService;
+const veterinarians_service_1 = require("./veterinarians.service");
+let VeterinariansController = class VeterinariansController {
+    constructor(veterinariansService) {
+        this.veterinariansService = veterinariansService;
     }
     findAll() {
-        return this.animalsService.findAll();
+        return this.veterinariansService.findAll();
     }
     findOne(id) {
-        return this.animalsService.findOne(id);
+        return this.veterinariansService.findOne(id);
     }
-    create(createAnimalDto) {
-        return this.animalsService.create(createAnimalDto);
+    create(body) {
+        return this.veterinariansService.create(body);
     }
-    update(id, updateAnimalDto) {
-        return this.animalsService.update(id, updateAnimalDto);
+    update(id, body) {
+        return this.veterinariansService.update(id, body);
     }
     remove(id) {
-        return this.animalsService.remove(id);
+        return this.veterinariansService.remove(id);
     }
 };
-exports.AnimalsController = AnimalsController;
+exports.VeterinariansController = VeterinariansController;
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], AnimalsController.prototype, "findAll", null);
+], VeterinariansController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)(":id"),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], AnimalsController.prototype, "findOne", null);
+], VeterinariansController.prototype, "findOne", null);
 __decorate([
     (0, common_1.Post)(),
     (0, common_1.HttpCode)(common_1.HttpStatus.NO_CONTENT),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_animal_dto_1.CreateAnimalDto]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
-], AnimalsController.prototype, "create", null);
+], VeterinariansController.prototype, "create", null);
 __decorate([
     (0, common_1.Patch)(":id"),
     __param(0, (0, common_1.Param)("id")),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, update_animal_dto_1.UpdateAnimalDto]),
+    __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", void 0)
-], AnimalsController.prototype, "update", null);
+], VeterinariansController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(":id"),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], AnimalsController.prototype, "remove", null);
-exports.AnimalsController = AnimalsController = __decorate([
-    (0, common_1.Controller)('animals'),
-    __metadata("design:paramtypes", [animals_service_1.AnimalsService])
-], AnimalsController);
-//# sourceMappingURL=animals.controller.js.map
+], VeterinariansController.prototype, "remove", null);
+exports.VeterinariansController = VeterinariansController = __decorate([
+    (0, common_1.Controller)('veterinarians'),
+    __metadata("design:paramtypes", [veterinarians_service_1.VeterinariansService])
+], VeterinariansController);
+//# sourceMappingURL=veterinarians.controller.js.map

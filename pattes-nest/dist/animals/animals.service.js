@@ -10,7 +10,50 @@ exports.AnimalsService = void 0;
 const common_1 = require("@nestjs/common");
 let AnimalsService = class AnimalsService {
     constructor() {
-        this.animals = [];
+        this.animals = [
+            {
+                id: 1,
+                name: "Belchior",
+                weight: 2.45,
+                color: "Laranja Com Branco",
+                observation: "Aparentemente Saudavel"
+            },
+            {
+                id: 2,
+                name: "Tommy",
+                weight: 2.67,
+                color: "Cinza Com Branco",
+                observation: "Aparentemente Saudavel e gordo"
+            }
+        ];
+    }
+    findAll() {
+        return this.animals;
+    }
+    findOne(id) {
+        let animal = this.animals.find((animal) => animal.id === Number(id));
+        if (!animal) {
+            throw new common_1.HttpException(`Animal With ID:${id} not found`, common_1.HttpStatus.NOT_FOUND);
+        }
+        else {
+            return animal;
+        }
+    }
+    create(createAnimalDto) {
+        this.animals.push(createAnimalDto);
+    }
+    update(id, updateAnimalDto) {
+        let animal = this.animals.findIndex((animal) => animal.id === Number(id));
+        if (!animal) {
+            throw new common_1.HttpException(`Animal With ID:${id} not found`, common_1.HttpStatus.NOT_FOUND);
+        }
+        {
+            this.animals[animal] = updateAnimalDto;
+        }
+    }
+    remove(id) {
+        let animal = this.animals.findIndex((animal) => animal.id === Number(id));
+        this.animals.splice(animal);
     }
 };
 exports.AnimalsService = AnimalsService;
