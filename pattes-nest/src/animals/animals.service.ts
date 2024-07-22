@@ -1,5 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Animal } from './entities/animal.entity';
+
 
 @Injectable()
 export class AnimalsService {
@@ -25,7 +26,12 @@ export class AnimalsService {
     }
 
     findOne(id: string): Animal {
-        return this.animals.find((animal: Animal) => animal.id === Number(id));
+        let animal = this.animals.find((animal: Animal) => animal.id === Number(id));
+        if (!animal) {
+            throw new HttpException(`Animal With ID:${id} not found`, HttpStatus.NOT_FOUND);
+        } else {
+            return animal;
+        }
     }
 
     create(createAnimalDto: any): void {
@@ -35,7 +41,13 @@ export class AnimalsService {
     update(id: string, updateAnimalDto: any): void {
         let animal = this.animals.findIndex((animal: Animal) => animal.id === Number(id));
 
-        this.animals[animal] = updateAnimalDto;
+        if (!animal) {
+            throw new HttpException(`Animal With ID:${id} not found`, HttpStatus.NOT_FOUND);
+        } {
+            this.animals[animal] = updateAnimalDto;
+        }
+
+
     }
 
     remove(id: string): void {

@@ -15,6 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AnimalsController = void 0;
 const common_1 = require("@nestjs/common");
 const animals_service_1 = require("./animals.service");
+const create_animal_dto_1 = require("./dto/create-animal.dto");
+const update_animal_dto_1 = require("./dto/update-animal.dto");
 let AnimalsController = class AnimalsController {
     constructor(animalsService) {
         this.animalsService = animalsService;
@@ -25,11 +27,11 @@ let AnimalsController = class AnimalsController {
     findOne(id) {
         return this.animalsService.findOne(id);
     }
-    create(body) {
-        return this.animalsService.create(body);
+    create(createAnimalDto) {
+        return this.animalsService.create(createAnimalDto);
     }
-    update(id, body) {
-        return this.animalsService.update(id, body);
+    update(id, updateAnimalDto) {
+        return this.animalsService.update(id, updateAnimalDto);
     }
     remove(id) {
         return this.animalsService.remove(id);
@@ -54,7 +56,7 @@ __decorate([
     (0, common_1.HttpCode)(common_1.HttpStatus.NO_CONTENT),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [create_animal_dto_1.CreateAnimalDto]),
     __metadata("design:returntype", void 0)
 ], AnimalsController.prototype, "create", null);
 __decorate([
@@ -62,7 +64,7 @@ __decorate([
     __param(0, (0, common_1.Param)("id")),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:paramtypes", [String, update_animal_dto_1.UpdateAnimalDto]),
     __metadata("design:returntype", void 0)
 ], AnimalsController.prototype, "update", null);
 __decorate([

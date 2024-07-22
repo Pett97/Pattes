@@ -31,14 +31,25 @@ let AnimalsService = class AnimalsService {
         return this.animals;
     }
     findOne(id) {
-        return this.animals.find((animal) => animal.id === Number(id));
+        let animal = this.animals.find((animal) => animal.id === Number(id));
+        if (!animal) {
+            throw new common_1.HttpException(`Animal With ID:${id} not found`, common_1.HttpStatus.NOT_FOUND);
+        }
+        else {
+            return animal;
+        }
     }
     create(createAnimalDto) {
         this.animals.push(createAnimalDto);
     }
     update(id, updateAnimalDto) {
         let animal = this.animals.findIndex((animal) => animal.id === Number(id));
-        this.animals[animal] = updateAnimalDto;
+        if (!animal) {
+            throw new common_1.HttpException(`Animal With ID:${id} not found`, common_1.HttpStatus.NOT_FOUND);
+        }
+        {
+            this.animals[animal] = updateAnimalDto;
+        }
     }
     remove(id) {
         let animal = this.animals.findIndex((animal) => animal.id === Number(id));

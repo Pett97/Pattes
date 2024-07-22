@@ -1,5 +1,7 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post } from '@nestjs/common';
 import { AnimalsService } from './animals.service';
+import { CreateAnimalDto } from './dto/create-animal.dto';
+import { UpdateAnimalDto } from './dto/update-animal.dto';
 
 
 //Nome define o nome da rota pra consultar
@@ -22,13 +24,13 @@ export class AnimalsController {
 
     @Post()
     @HttpCode(HttpStatus.NO_CONTENT)
-    create(@Body() body) {
-        return this.animalsService.create(body);
+    create(@Body() createAnimalDto: CreateAnimalDto) {
+        return this.animalsService.create(createAnimalDto);
     }
 
     @Patch(":id")
-    update(@Param("id") id: string, @Body() body) {
-        return this.animalsService.update(id, body);
+    update(@Param("id") id: string, @Body() updateAnimalDto: UpdateAnimalDto) {
+        return this.animalsService.update(id, updateAnimalDto);
     }
 
     @Delete(":id")
