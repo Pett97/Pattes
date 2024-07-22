@@ -1,6 +1,8 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post } from '@nestjs/common';
 import { AnimalsService } from './animals.service';
 
+
+//Nome define o nome da rota pra consultar
 @Controller('animals')
 export class AnimalsController {
 
