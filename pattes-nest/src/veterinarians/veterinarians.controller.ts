@@ -1,30 +1,33 @@
 
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post } from '@nestjs/common';
 import { VeterinariansService } from './veterinarians.service';
+import { Veterian } from './entities/veterian.entity';
+import { CreateVeterianDto } from './dto/create-veterian.dto';
+import { UpdateVeterianDto } from './dto/update-veterian.dto';
 //Nome define o nome da rota pra consultar 
 @Controller('veterinarians')
 export class VeterinariansController {
-  constructor(private readonly veterinariansService:VeterinariansService) {
-  }
-  @Get()
-  findAll() {
-    return this.veterinariansService.findAll();
-  }
+    constructor(private readonly veterinariansService: VeterinariansService) {
+    }
+    @Get()
+    findAll() {
+        return this.veterinariansService.findAll();
+    }
 
-  @Get(":id")
-    findOne(@Param('id') id: string) {
+    @Get(":id")
+    findOne(@Param('id') id: string): Veterian {
         return this.veterinariansService.findOne(id);
     }
 
     @Post()
     @HttpCode(HttpStatus.NO_CONTENT)
-    create(@Body() body) {
-        return this.veterinariansService.create(body);
+    create(@Body() createVeterianDto: CreateVeterianDto): void {
+        return this.veterinariansService.create(createVeterianDto);
     }
 
     @Patch(":id")
-    update(@Param("id") id: string, @Body() body) {
-        return this.veterinariansService.update(id, body);
+    update(@Param("id") id: string, @Body() updateVeterianDto: UpdateVeterianDto) {
+        return this.veterinariansService.update(id, updateVeterianDto);
     }
 
     @Delete(":id")

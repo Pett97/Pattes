@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpCode, HttpException, HttpStatus, Injectable, Post } from '@nestjs/common';
 import { Veterian } from './entities/veterian.entity';
 @Injectable()
 export class VeterinariansService {
@@ -18,11 +18,17 @@ export class VeterinariansService {
     }
 
     findOne(id: string): Veterian {
-        return this.veterians.find((Veterian: Veterian) => Veterian.id === Number(id));
+        let veterian = this.veterians.find((veterian: Veterian) => veterian.id === Number(id));
+
+        if (!veterian) {
+            throw new HttpException(`Veterian with ID:${id} not found`, HttpStatus.NOT_FOUND);
+        } else {
+            return veterian
+        }
     }
 
-    create(veterianDto: any): void {
-        this.veterians.push(veterianDto);
+    create(veterian: any): void {
+        this.veterians.push(veterian);
     }
 
     private findIndexVeterian(id: string): number {
@@ -31,10 +37,13 @@ export class VeterinariansService {
         return index;
     }
 
-    update(id: string, updateVeterianDto): void {
+    update(id: string, updateVeterianDto: any): void {
         let index = this.findIndexVeterian(id);
-
-        this.veterians[index] = updateVeterianDto;
+        if (!index) {
+            throw new HttpException(`Veterian with ID:${id} not found`, HttpStatus.NOT_FOUND)
+        } else {
+            this.veterians[index] = updateVeterianDto;
+        }
     }
 
     remove(id: string): void {

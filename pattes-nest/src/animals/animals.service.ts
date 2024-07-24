@@ -2,6 +2,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Animal } from './entities/animal.entity';
 
 
+
 @Injectable()
 export class AnimalsService {
     private animals: Animal[] = [

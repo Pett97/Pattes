@@ -1,10 +1,13 @@
 import { VeterinariansService } from './veterinarians.service';
+import { Veterian } from './entities/veterian.entity';
+import { CreateVeterianDto } from './dto/create-veterian.dto';
+import { UpdateVeterianDto } from './dto/update-veterian.dto';
 export declare class VeterinariansController {
     private readonly veterinariansService;
     constructor(veterinariansService: VeterinariansService);
-    findAll(): import("./entities/veterian.entity").Veterian[];
-    findOne(id: string): import("./entities/veterian.entity").Veterian;
-    create(body: any): void;
-    update(id: string, body: any): void;
+    findAll(): Veterian[];
+    findOne(id: string): Veterian;
+    create(createVeterianDto: CreateVeterianDto): void;
+    update(id: string, updateVeterianDto: UpdateVeterianDto): void;
     remove(id: string): void;
 }
