@@ -23,7 +23,13 @@ let VeterinariansService = class VeterinariansService {
         return this.veterians;
     }
     findOne(id) {
-        return this.veterians.find((Veterian) => Veterian.id === Number(id));
+        let veterian = this.veterians.find((veterian) => veterian.id === Number(id));
+        if (!veterian) {
+            throw new common_1.HttpException(`Veterian with ID:${id} not found`, common_1.HttpStatus.NOT_FOUND);
+        }
+        else {
+            return veterian;
+        }
     }
     create(veterian) {
         this.veterians.push(veterian);
@@ -34,7 +40,12 @@ let VeterinariansService = class VeterinariansService {
     }
     update(id, updateVeterianDto) {
         let index = this.findIndexVeterian(id);
-        this.veterians[index] = updateVeterianDto;
+        if (!index) {
+            throw new common_1.HttpException(`Veterian with ID:${id} not found`, common_1.HttpStatus.NOT_FOUND);
+        }
+        else {
+            this.veterians[index] = updateVeterianDto;
+        }
     }
     remove(id) {
         let index = this.findIndexVeterian(id);

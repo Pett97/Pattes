@@ -1,14 +1,31 @@
 services:
   nest:
-    image: node:latest  
+    image: node:latest
     working_dir: /usr/src/backend
     command: bash -c "npm install --quiet --no-fund --loglevel=error && npm run start:dev"
     volumes:
-      - ./pattes-nest:/usr/src/backend  
+      - ./pattes-nest:/usr/src/backend
     ports:
       - "7000:3000"
     networks:
       - pattes-network
+    depends_on:
+     - pattes_db  
+
+  pattes_db:
+    image: mariadb:10.3
+    container_name: db_pattes
+    env_file:
+      - .env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: "${DB_DATABASE}"
+      MYSQL_USER: "${DB_USER}"
+      MYSQL_PASSWORD: "${DB_PASSWORD}"
+    volumes:
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+    networks:
+      - pattes-network   
 
 networks:
   pattes-network:
