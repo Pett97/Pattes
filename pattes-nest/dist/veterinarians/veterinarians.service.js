@@ -25,8 +25,8 @@ let VeterinariansService = class VeterinariansService {
     findOne(id) {
         return this.veterians.find((Veterian) => Veterian.id === Number(id));
     }
-    create(veterianDto) {
-        this.veterians.push(veterianDto);
+    create(veterian) {
+        this.veterians.push(veterian);
     }
     findIndexVeterian(id) {
         let index = this.veterians.findIndex((veterian) => veterian.id === Number(id));

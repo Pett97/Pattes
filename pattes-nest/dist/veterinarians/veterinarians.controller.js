@@ -15,6 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.VeterinariansController = void 0;
 const common_1 = require("@nestjs/common");
 const veterinarians_service_1 = require("./veterinarians.service");
+const veterian_entity_1 = require("./entities/veterian.entity");
+const create_veterian_dto_1 = require("./dto/create-veterian.dto");
+const update_veterian_dto_1 = require("./dto/update-veterian.dto");
 let VeterinariansController = class VeterinariansController {
     constructor(veterinariansService) {
         this.veterinariansService = veterinariansService;
@@ -25,11 +28,11 @@ let VeterinariansController = class VeterinariansController {
     findOne(id) {
         return this.veterinariansService.findOne(id);
     }
-    create(body) {
-        return this.veterinariansService.create(body);
+    create(createVeterianDto) {
+        return this.veterinariansService.create(createVeterianDto);
     }
-    update(id, body) {
-        return this.veterinariansService.update(id, body);
+    update(id, updateVeterianDto) {
+        return this.veterinariansService.update(id, updateVeterianDto);
     }
     remove(id) {
         return this.veterinariansService.remove(id);
@@ -47,14 +50,14 @@ __decorate([
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", veterian_entity_1.Veterian)
 ], VeterinariansController.prototype, "findOne", null);
 __decorate([
     (0, common_1.Post)(),
     (0, common_1.HttpCode)(common_1.HttpStatus.NO_CONTENT),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [create_veterian_dto_1.CreateVeterianDto]),
     __metadata("design:returntype", void 0)
 ], VeterinariansController.prototype, "create", null);
 __decorate([
@@ -62,7 +65,7 @@ __decorate([
     __param(0, (0, common_1.Param)("id")),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:paramtypes", [String, update_veterian_dto_1.UpdateVeterianDto]),
     __metadata("design:returntype", void 0)
 ], VeterinariansController.prototype, "update", null);
 __decorate([
