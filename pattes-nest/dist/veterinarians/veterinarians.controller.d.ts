@@ -5,9 +5,9 @@ import { UpdateVeterianDto } from './dto/update-veterian.dto';
 export declare class VeterinariansController {
     private readonly veterinariansService;
     constructor(veterinariansService: VeterinariansService);
-    findAll(): Veterian[];
-    findOne(id: string): Veterian;
+    findAll(): Promise<Veterian[] | undefined>;
+    findOne(id: string): Promise<Veterian | undefined>;
     create(createVeterianDto: CreateVeterianDto): void;
-    update(id: string, updateVeterianDto: UpdateVeterianDto): void;
-    remove(id: string): void;
+    update(id: string, updateVeterianDto: UpdateVeterianDto): Promise<void>;
+    remove(id: string): Promise<void>;
 }

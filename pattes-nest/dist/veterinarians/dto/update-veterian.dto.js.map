@@ -1,1 +1,1 @@
-{"version":3,"file":"update-veterian.dto.js","sourceRoot":"","sources":["../../../src/veterinarians/dto/update-veterian.dto.ts"],"names":[],"mappings":";;;AAAA,uDAAmD;AACnD,+DAA0D;AAG1D,MAAa,iBAAkB,SAAQ,IAAA,0BAAW,EAAC,uCAAiB,CAAC;CAOpE;AAPD,8CAOC"}
+{"version":3,"file":"update-veterian.dto.js","sourceRoot":"","sources":["../../../src/veterinarians/dto/update-veterian.dto.ts"],"names":[],"mappings":";;;AAAA,uDAAmD;AACnD,+DAA0D;AAE1D,MAAa,iBAAkB,SAAQ,IAAA,0BAAW,EAAC,uCAAiB,CAAC;CAOpE;AAPD,8CAOC"}

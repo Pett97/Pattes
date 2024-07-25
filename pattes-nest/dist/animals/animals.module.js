@@ -16,7 +16,7 @@ exports.AnimalsModule = AnimalsModule;
 exports.AnimalsModule = AnimalsModule = __decorate([
     (0, common_1.Module)({
         controllers: [animals_controller_1.AnimalsController],
-        providers: [animals_service_1.AnimalsService]
+        providers: [animals_service_1.AnimalsService],
     })
 ], AnimalsModule);
 //# sourceMappingURL=animals.module.js.map

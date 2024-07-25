@@ -1,10 +1,9 @@
 import { Veterian } from './entities/veterian.entity';
 export declare class VeterinariansService {
-    private veterians;
-    findAll(): Veterian[];
-    findOne(id: string): Veterian;
-    create(veterian: any): void;
-    private findIndexVeterian;
-    update(id: string, updateVeterianDto: any): void;
-    remove(id: string): void;
+    private veteriansRepository;
+    findAll(): Promise<Veterian[]>;
+    findOne(idNumber: string): Promise<Veterian | undefined>;
+    create(veterian: any): Promise<void>;
+    update(id: string, update: Partial<Veterian>): Promise<void>;
+    remove(id: string): Promise<void>;
 }

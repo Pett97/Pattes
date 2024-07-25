@@ -10,11 +10,14 @@ exports.VeterinariansModule = void 0;
 const common_1 = require("@nestjs/common");
 const veterinarians_service_1 = require("./veterinarians.service");
 const veterinarians_controller_1 = require("./veterinarians.controller");
+const typeorm_1 = require("@nestjs/typeorm");
+const veterian_entity_1 = require("./entities/veterian.entity");
 let VeterinariansModule = class VeterinariansModule {
 };
 exports.VeterinariansModule = VeterinariansModule;
 exports.VeterinariansModule = VeterinariansModule = __decorate([
     (0, common_1.Module)({
+        imports: [typeorm_1.TypeOrmModule.forFeature([veterian_entity_1.Veterian])],
         controllers: [veterinarians_controller_1.VeterinariansController],
         providers: [veterinarians_service_1.VeterinariansService],
     })

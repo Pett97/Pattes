@@ -1,8 +1,7 @@
 export class Animal {
-     id: number;
-     name: string;
-     weight: number;
-     color: string;
-     observation: string;
-
+  id: number;
+  name: string;
+  weight: number;
+  color: string;
+  observation: string;
 }
